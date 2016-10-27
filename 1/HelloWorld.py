@@ -1,0 +1,5 @@
+print("4_MGMR_Team")
+print("Alexander Markin - Matr: 11371561 email: Alexander.Markin@lmu.de")
+print("Yulia Goncharova - Matr: 11153082 email: Yulia.Goncharova@campus.lmu.de")
+print("Iryna Matviienko - Matr: 11139916 email: iry.matviienko@campus.lmu.de")
+print("Adrian Reitz - Matr:11578079  email: A.reitz@campus.lmu.de")
