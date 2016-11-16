@@ -5,3 +5,4 @@ chunking 1
 coreference 1
 html 1
 machine 8
+computational 10
