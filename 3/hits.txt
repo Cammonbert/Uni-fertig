@@ -1,0 +1,8 @@
+computational 10
+linguistics 18
+processing 6
+chunking 1
+coreference 1
+html 1
+machine 8
+computational 10
