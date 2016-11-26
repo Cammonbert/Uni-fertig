@@ -1,0 +1,55 @@
+Jedes Aufgabenblatt gibt 10 Punkte.
+Die Punkte verteilen sich gleichmäßig auf die gestellten Aufgaben.
+
+
+    Allgemeine Anmerkungen:
+    ***********************
+
+
+
+
+    Korrektheit und Vollständigkeit:
+    >------------------------------<
+    "Sind die Lösungen zu allen Aufgaben korrekt und vollständig, insbesondere:
+     - läuft das Programm in einer angemessenen Zeit?
+     - läuft das Programm mit angemessenem Ressourcenbedarf?
+     - kann das Programm alle möglichen Eingaben verarbeiten?"
+
+    2: OK
+    - Zum Summieren von Listen kann auch die sum() Methode verwendet werden.
+
+
+     3: 
+     - Beim Splitten müsst ihr hier auf das Komma achten, es sollte bei ', ' 
+       gesplittet werden. Das Wort 'yourselves' ist in beiden Dateien vorhanden. Bei 
+       en_pronouns.txt ist es das letzte Wort, bei en_stopwords.txt nicht. So wie ihr 
+       es einlest wird es ein Mal als 'yourselves' und ein Mal als 'yourselves,' 
+       abgespeichert. Das macht dann bei Operationen wie z.B. Schnitt und Differenz 
+       Probleme.
+
+    4: OK
+
+
+
+    Programmlesbarkeit:
+    >-----------------<
+    "Ist der Programmcode gut nachvollziehbar, insbesondere:
+    - ist der Code gut strukturiert und für die Aufgabe angemessenen?
+    - ist die Dokumentation klar und verständlich?
+    - sind die Bezeichner (Variablen, Funktionen, etc.) aussagekräftig?"
+
+    2:
+    - `print(line)`
+      Hier hier der Inhalt des Strings auf den line verweist ausgegeben.
+
+    3: OK
+
+    4: OK
+
+
+    Anmerkung:
+    Der Python Style Guide PEP 8 schlägt vor, in jeder Zeile höchstens 79 Zeichen
+    zu haben.
+    https://www.python.org/dev/peps/pep-0008/
+
+Punkte: 9 von 10
