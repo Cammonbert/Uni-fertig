@@ -1,0 +1,48 @@
+1.1. E-Mail address
+regex = r"[^W][^@ ]+@[^@ ]+[^\W]
+1 matches in einstein.txt
+2 matches in mitra.txt
+2 matches in orchard.txt
+
+1.2. Percentage
+regex = r"\d+%|\d+[ ]+%|\d+.\d+[ ]+%"
+1 matches in PDES.txt
+31 matches in fort.txt
+1 matches in kerylos.txt
+
+1.3. Date lines
+regex = r"[A-ZÖÄÜ]+, [A-ZÖÄÜ][a-züäöß]+ \d+-\d+-\d+ \d+:\d+:\d+ [A-Z]+"
+1 matches in aranberri.txt
+1 matches in baltimore.txt
+1 matches in boyd.txt
+1 matches in copeland.txt
+1 matches in einstein.txt
+1 matches in eurocup.txt
+1 matches in gaillard.txt
+
+1.4. German Postal Address
+1 matches in mitra.txt
+1 matches in orchard.txt
+regex = r"[A-ZÖÄÜ][a-z,öäüß]+ \d+, \d+ [A-ZÖÄÜ][a-züäöß]+"
+
+1.5. Acronyms
+regex = r" ([A-ZÖÄÜ]{2,5})([ .,])"
+11 matches in PDES.txt
+3 matches in SP3125.txt
+3 matches in aranberri.txt
+3 matches in baltimore.txt
+8 matches in boyd.txt
+1 matches in copeland.txt
+3 matches in einstein.txt
+2 matches in eurocup.txt
+2 matches in fort.txt
+4 matches in gaillard.txt
+3 matches in garuda.txt
+3 matches in kerylos.txt
+1 matches in mitra.txt
+22 matches in route276.txt
+1 matches in tiskilwa.txt
+2 matches in tomasulo.txt
+3 matches in torres.txt
+1 matches in wakefield.txt
+1 matches in wallace.txt
