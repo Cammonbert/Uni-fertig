@@ -21,24 +21,24 @@ c) Draw a UML class diagram for your Employee class. (1 point)
 '''
 
 class Employee:
-    def __init__(self, num, person, gender):
+    def __init__(self, num, person, gen):
         self.number = num
         self.name = person
-        self.gender = gender
+        self.gender = gen
 
         self.working = False
         self.balance = 0
         self.earn = 0
 
-    def change_gender(self, gender):
-        if self.gender == gender:
-            print("Already " + gender)
+    def change_gender(self, gend):
+        if self.gender == gend:
+            print("Already " + gend)
         else:
-            self.gender = gender
+            self.gender = gend
             return self.gender
 
-    def change_name(self, name):
-        self.name = name
+    def change_name(self, nm):
+        self.name = nm
         return self.name
 
     def work(self):
@@ -48,12 +48,12 @@ class Employee:
             self.working = False
         return self.working
 
-    def sell_stuff(self, amount):
-        self.balance += amount
+    def sell_stuff(self, amnt):
+        self.balance += amnt
         return self.balance
 
-    def make_mistake(self, amount):
-        self.balance -= 12*amount
+    def make_mistake(self, amnt):
+        self.balance -= 12*amnt
         return self.balance
 
     def get_paid(self):
@@ -91,7 +91,6 @@ if __name__ == "__main__":
     earnieemplo.work()
     earnieemplo.make_mistake(300)
     earnieemplo.get_paid()
-    earnieemplo.work()
 
     print(olafemplo)
     print(guentheremplo)
