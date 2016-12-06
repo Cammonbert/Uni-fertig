@@ -44,7 +44,7 @@ class Account:
             print("Negativen Betrag abheben? Benutz lieber deposit()")
         else:
             if self.balance-amount>=-1000:  #Wenn nicht unter 0 gegangen werden darf 0 anstatt -1000 benutzen
-                self.balance=self.balance-amount
+                self.balance -= amount
                 return self.balance
             else:
                 print("Zu wenig Guthaben. \nDerzeitiges Guthaben beträgt: ",self.balance)
@@ -54,7 +54,7 @@ class Account:
         if amount<=0:
             print("Negativen Wert einzahlen? Benutz lieber withdraw()")
         else:
-            self.balance=self.balance+amount
+            self.balance += amount
             return self.balance
 
     '''Setzt Person, der das Konto gehört'''
@@ -71,8 +71,8 @@ class Account:
 
     '''Erhöht/Senkt Kontostand bei Abruf um 1.5%'''
     def apply_interest(self):
-        self.balance=self.balance+(self.balance*0.015)
-        if self.balance<=-1000:
+        self.balance += (self.balance*0.015)
+        if self.balance <= -1000:
             print("Kontosperrung, bitte Schulden beheben")
             return self.balance
         else:
