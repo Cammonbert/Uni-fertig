@@ -54,10 +54,9 @@ class Customer:
         return self.age
 
     def __str__(self):
-        return "*** Customer Info ***" \
-               + "First Name:" + str(self.first_name) \
-               + " Last Name:" + str(self.last_name) \
-               + "Age: " + str(self.age)
+        return "First Name: " + str(self.first_name) \
+               + " Last Name: " + str(self.last_name) \
+               + " Age: " + str(self.age)
 
     # SETTERS
     def set_lastname(self, ln):
@@ -81,7 +80,7 @@ class Account:
     - holder (object of class 'Customer')
     - balance '''
 
-    
+
     # CONSTRUCTOR
     id = 0
     def __init__(self, holder):
@@ -89,7 +88,7 @@ class Account:
         an object has been created. used to initialize attributes'''
         self.holder = holder
         self.balance = 0
-        self.id += 1
+        Account.id += 1
         self.acc_id = self.id
 
 
@@ -103,7 +102,7 @@ class Account:
             amount = self.balance
         self.balance -= amount
         return amount
-        
+
     def deposit(self, amount):
         ''' deposit an amount of money into an account:
         add the amount of money to the balance '''
@@ -113,7 +112,7 @@ class Account:
         ''' change the account holder.
         We could perform validation here. '''
         self.holder = new_holder
-        
+
     def __str__(self):
         ''' returns a string describing the account object '''
         return "[Account: ID=" + str(self.acc_id) \
@@ -139,16 +138,15 @@ class Bank:
     def print_accounts(self):
         ''' print out all accounts of the bank '''
         print("\n** ACCOUNTS **")
-        '''
-        Hier komm ich nicht weiter
-        '''
+        for i in range(1,len(bank.accounts)+1):
+            print(bank.accounts.get(i))
 
     def print_customers(self):
         ''' prints out all the customers of the bank '''
         print("\n** CUSTOMERS **")
-        '''
-        Hier komm ich nicht weiter
-        '''
+        for i in range(1,len(bank.customers)+1):
+            print(bank.customers.get(i))
+
 
     def add_customer(self, customer):
         ''' adds a customer object to the bank's customers '''
@@ -199,7 +197,7 @@ if __name__ == "__main__":
 
     # Print out all the customers of the bank
     bank.print_customers()
-    
+
     # Create a few accounts and add them to the bank object
     annesAcc1 = Account(anne)
     bank.add_account(annesAcc1)
@@ -234,5 +232,5 @@ if __name__ == "__main__":
     # Number of customers
     '''print("")
     Customer.print_info()'''
-    print("Number of customers that have been added to the bank:", len(bank.customers.keys()))   
-    
+    print("Number of customers that have been added to the bank:", len(bank.customers.keys()))
+
