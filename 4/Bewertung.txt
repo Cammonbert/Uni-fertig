@@ -15,7 +15,7 @@ Korrektheit und Vollständigkeit:
 - läuft das Programm mit angemessenem Ressourcenbedarf?
 - kann das Programm alle möglichen Eingaben verarbeiten?"
 
-Es sollen nur Wörter mit 5 oder mehr Buchstaben berücksichtigt werden.
+OK
 
 
 Programmlesbarkeit:
@@ -25,7 +25,9 @@ Programmlesbarkeit:
 - ist die Dokumentation klar und verständlich?
 - sind die Bezeichner (Variablen, Funktionen, etc.) aussagekräftig?"
 
-Sehr gut!
+Zu viele Kommentare. Die Übersichtlichkeit wird beeinträchtigt.
+Die meisten eurer Kommentare sind nicht notwendig, da ihr aussagekräftige
+Bezeichner benutzt.
 
 
-Punkte: 9 von 10
+Punkte: 10 von 10

@@ -5,7 +5,7 @@ Die Punkte verteilen sich gleichmäßig auf die gestellten Aufgaben.
     Allgemeine Anmerkungen:
     ***********************
 
-    Keine Abgabe
+    Bitte in Zukunft auch die Daten mit ins Repository nehmen.
 
 
     Korrektheit und Vollständigkeit:
@@ -14,7 +14,7 @@ Die Punkte verteilen sich gleichmäßig auf die gestellten Aufgaben.
      - läuft das Programm in einer angemessenen Zeit?
      - läuft das Programm mit angemessenem Ressourcenbedarf?
      - kann das Programm alle möglichen Eingaben verarbeiten?"
-
+    Keine Probleme
 
 
 
@@ -25,7 +25,7 @@ Die Punkte verteilen sich gleichmäßig auf die gestellten Aufgaben.
     - ist die Dokumentation klar und verständlich?
     - sind die Bezeichner (Variablen, Funktionen, etc.) aussagekräftig?"
 
+    Keine Probleme
 
 
-
-Punkte: 0 von 10
+Punkte: 10 von 10
