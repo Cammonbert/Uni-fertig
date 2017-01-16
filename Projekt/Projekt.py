@@ -7,5 +7,33 @@ def read_links():
                     line = line.replace("|","        ",1)
                     line = line.replace("]","",2)
                     writefile.write(line)
+        writefile.write("\n")
 
-read_links()
+
+def linkstatistik():
+    dictionary = dict()
+    with open("Linktext.txt", encoding="utf-8") as readfile:
+        for i in readfile:
+            if i in dictionary:
+                dictionary[i] += 1
+            else:
+                dictionary[i] = 1
+    with open("Linkstatistik.txt","a",encoding="utf-8") as writefile:
+        for i in sorted(dictionary):
+            writefile.write(str(dictionary[i]) + " , " + i)
+
+
+def linkstatistikover200():
+    dictionary = dict()
+    with open("Linktext.txt", encoding="utf-8") as readfile:
+        for i in readfile:
+            if i in dictionary:
+                dictionary[i] += 1
+            else:
+                dictionary[i] = 1
+    with open("Over200.txt","a",encoding="utf-8") as writefile:
+        for i in sorted(dictionary):
+            if dictionary[i] >=200:
+                writefile.write(str(dictionary[i]) + " , " + i)
+
+linkstatistikover200()
