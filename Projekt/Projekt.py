@@ -1,3 +1,6 @@
+import re
+
+
 def read_links():
     with open("Linktext.txt","a",encoding="utf-8") as writefile:
         with open("wikilinks_en.txt",encoding="utf-8") as readfile:
@@ -36,4 +39,13 @@ def linkstatistikover200():
             if dictionary[i] >=200:
                 writefile.write(str(dictionary[i]) + " , " + i)
 
-linkstatistikover200()
+def stringsuche():
+    reg = r"(\d+)([ , ]{3})(.+)([ ]{8})(.+)"
+    eingabe = input("string: ")
+    with open("Over200.txt",encoding="utf-8") as readfile:
+        for line in readfile:
+            list1 = re.findall(reg, line)
+            for item in list1:
+                if eingabe == item[4]:
+                    print(item[2])
+stringsuche()
