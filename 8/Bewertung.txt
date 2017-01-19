@@ -1,0 +1,39 @@
+Allgemeine Anmerkungen:
+***********************
+
+
+
+
+Korrektheit und Vollständigkeit:
+>------------------------------<
+"Sind die Lösungen zu allen Aufgaben korrekt und vollständig, insbesondere:
+ - läuft das Programm in einer angemessenen Zeit?
+ - läuft das Programm mit angemessenem Ressourcenbedarf?
+ - kann das Programm alle möglichen Eingaben verarbeiten?"
+
+Aufgabe 1:
+
+In der ersten Zeile werden die Wörter zuerst "gelowercased" und dann zu einem
+Set gemacht, in der zweiten Zeile ist es andersrum. Das bedeutet
+In Zeile 1 kommt jedes in Kleinbuchstaben konvertiertes Wort nur einmal vor,
+in Zeile 2 so oft wie es in verschiedenen Groß-/Kleinschreibweisen vorkommt.
+
+
+Aufgabe 2:
+
+Viele der Definitionen in eurem Konstruktor sind an der Stelle gar nicht notwendig.
+Ihr benutzt immer Instanzvariablen, aber meist sind lokale Variablen ausreichend.
+
+
+
+Programmlesbarkeit:
+>-----------------<
+"Ist der Programmcode gut nachvollziehbar, insbesondere:
+- ist der Code gut strukturiert und für die Aufgabe angemessenen?
+- ist die Dokumentation klar und verständlich?
+- sind die Bezeichner (Variablen, Funktionen, etc.) aussagekräftig?"
+
+
+
+
+Punkte: 8 von 10

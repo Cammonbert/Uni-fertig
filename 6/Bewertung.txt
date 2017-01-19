@@ -1,0 +1,34 @@
+Allgemeine Anmerkungen:
+***********************
+
+
+
+
+Korrektheit und Vollständigkeit:
+>------------------------------<
+"Sind die Lösungen zu allen Aufgaben korrekt und vollständig, insbesondere:
+- läuft das Programm in einer angemessenen Zeit?
+- läuft das Programm mit angemessenem Ressourcenbedarf?
+- kann das Programm alle möglichen Eingaben verarbeiten?"
+
+Aufgabe 1:
+
+a) OK
+b) OK
+c) OK
+d) OK
+e) OK
+
+Aufgabe 2: OK
+
+Programmlesbarkeit:
+>-----------------<
+"Ist der Programmcode gut nachvollziehbar, insbesondere:
+- ist der Code gut strukturiert und für die Aufgabe angemessenen?
+- ist die Dokumentation klar und verständlich?
+- sind die Bezeichner (Variablen, Funktionen, etc.) aussagekräftig?"
+
+
+
+
+Punkte: 9 von 9
