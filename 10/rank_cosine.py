@@ -31,10 +31,10 @@ with open("donald100.txt", encoding="utf") as readfile:
        if(cosine > 0):
         cosines[cosine] = line
 
-reversedDict = sorted(cosines.keys())
-topTenList = sorted(cosines, key = cosines.get)[-10:]
 
-for i in reversed(sorted(cosines.keys())):
-    print(i, ':' , cosines[i])
+#for i in reversed(sorted(cosines.keys())):
+#        print(i, ':' , cosines[i])
 
 
+first2pairs = {k: cosines[k] for k in sorted(cosines.keys(),reverse=True)[:3]}
+print(first2pairs)
