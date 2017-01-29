@@ -19,10 +19,11 @@ with open("Linktext.txt", "a", encoding="utf-8") as writefile:
                     continue
                 if prevChar == "]":
                     if ch == "]":
-                        if hasText is True:
-                            writefile.write(linkText + "\t" + textText + "\n")
-                        else:
-                            writefile.write(linkText + "\t" + linkText + "\n")
+                        if foundLinkBeg is True:
+                            if hasText is True:
+                                writefile.write(linkText + "\t" + textText + "\n")
+                            else:
+                                writefile.write(linkText + "\t" + linkText + "\n")
                         foundLinkBeg = False
                         hasText = False
                     else:
@@ -44,6 +45,10 @@ with open("Linktext.txt", "a", encoding="utf-8") as writefile:
                     if hasText is True:
                         textText += ch
                         continue
+                    if linkText == "":
+                        if ch == "#" or ch == "/":
+                            foundLinkBeg = False
+                            hasText = False
                     linkText += ch
 
             if hasText is False:
