@@ -1,4 +1,4 @@
-with open("Linktext.txt", "a", encoding="utf-8") as writefile:
+with open("Linktext.txt", "w", encoding="utf-8") as writefile:
     with open("wikilinks_en.txt", encoding="utf-8") as readfile:
         foundLinkBeg = False
         hasText = False
