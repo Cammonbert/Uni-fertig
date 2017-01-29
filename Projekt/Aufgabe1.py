@@ -1,9 +1,58 @@
 with open("Linktext.txt", "a", encoding="utf-8") as writefile:
     with open("wikilinks_en.txt", encoding="utf-8") as readfile:
+        foundLinkBeg = False
+        hasText = False
+        linkText = ""
+        textText = ""
+        prevChar = ""
+
         for line in readfile:
-            if "|" in line:
-                line = line.replace("[", "", 2)
-                line = line.replace("|", "        ", 1)
-                line = line.replace("]", "", 2)
-                writefile.write(line)
+            for ch in line:
+                if ch == "\n":
+                    break
+
+                if prevChar == "[" and ch == "[":
+                    foundLinkBeg = True
+                    hasText = False
+                    linkText = ""
+                    textText = ""
+                    continue
+                if prevChar == "]":
+                    if ch == "]":
+                        if hasText is True:
+                            writefile.write(linkText + "\t" + textText + "\n")
+                        else:
+                            writefile.write(linkText + "\t" + linkText + "\n")
+                        foundLinkBeg = False
+                        hasText = False
+                    else:
+                        if hasText is True:
+                            textText += "]"
+                        else:
+                            linkText += "]"
+                    continue
+
+                prevChar = ch
+
+                if ch == "]":
+                    continue
+
+                if foundLinkBeg is True:
+                    if ch == "|":
+                        hasText = True
+                        continue
+                    if hasText is True:
+                        textText += ch
+                        continue
+                    linkText += ch
+
+            if hasText is False:
+                foundLinkBeg = False
+                linkText = ""
+                textText = ""
+                prevChar = ""
+            else:
+                textText += " "
+                prevChar = " "
+
     writefile.write("\n")
