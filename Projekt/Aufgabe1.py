@@ -1,3 +1,29 @@
+
+'''
+
+[[link | text]]
+
+* look for first first [[ in line
+* look for | marker for text beginning
+* look for ]]
+
+**. Drop if newlines in link
+**. If newline in text add space see wiki
+**. Drop if nested [[Text1[[Text2]]Text3]], in this case take only internal one
+**. Drop if anchors - that means link begins with #, because it is not possible to clarify page url
+**. Drop if links to internal subpage - that means link begins with /, because it is not possible to clarify page url
+
+***. Parse text until ]] or [[ or end of file
+***. If text is empty => text = link
+
+TODO:
+now just ignoring
+
+**. Magic links? {{}}
+**. Repetitive |
+
+'''
+
 with open("Linktext.txt", "w", encoding="utf-8") as writefile:
     with open("wikilinks_en.txt", encoding="utf-8") as readfile:
         foundLinkBeg = False
