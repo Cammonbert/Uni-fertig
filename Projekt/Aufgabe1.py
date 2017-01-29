@@ -20,7 +20,7 @@ with open("Linktext.txt", "w", encoding="utf-8") as writefile:
                 if prevChar == "]":
                     if ch == "]":
                         if foundLinkBeg is True:
-                            if hasText is True:
+                            if hasText is True and textText != "":
                                 writefile.write(linkText + "\t" + textText + "\n")
                             else:
                                 writefile.write(linkText + "\t" + linkText + "\n")
