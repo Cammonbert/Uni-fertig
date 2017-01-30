@@ -5,6 +5,6 @@ with open("Linktext.txt", encoding="utf-8") as readfile:
             dictionary[i] += 1
         else:
             dictionary[i] = 1
-with open("Linkstatistik.txt","a",encoding="utf-8") as writefile:
+with open("Linkstatistik.txt","w",encoding="utf-8") as writefile:
     for i in sorted(dictionary):
-        writefile.write(str(dictionary[i]) + " , " + i)
+        writefile.write(str(dictionary[i]) + "\t" + i)
