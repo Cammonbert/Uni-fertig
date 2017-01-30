@@ -22,6 +22,12 @@ now just ignoring
 **. Magic links? {{}}
 **. Repetitive |
 
+Alternative approach:
+Use this regex string for detection
+ [\[][\[]([^\|\n]*)(\|([^\]]+))*[\]][\]]
+need to be extended for corner cases
+Possible execution speed advantage?
+
 '''
 
 with open("Linktext.txt", "w", encoding="utf-8") as writefile:
