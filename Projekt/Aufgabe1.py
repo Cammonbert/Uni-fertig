@@ -30,6 +30,9 @@ Possible execution speed advantage?
 
 '''
 
+import time
+start_time = time.time()
+
 with open("Linktext.txt", "w", encoding="utf-8") as writefile:
     with open("wikilinks_en.txt", encoding="utf-8") as readfile:
         foundLinkBeg = False
@@ -92,4 +95,4 @@ with open("Linktext.txt", "w", encoding="utf-8") as writefile:
                 textText += " "
                 prevChar = " "
 
-    writefile.write("\n")
+print("Running time: %d:%d" % (((time.time() - start_time)/60), ((time.time() - start_time)%60)))
