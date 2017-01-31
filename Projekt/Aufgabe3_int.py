@@ -14,8 +14,12 @@ def outputfile_open():
 searchwords = dict()
 dictText = dict()
 
+linkstatistikfilename = "Linkstatistik.txt"
 if len(sys.argv) > 1:
-    with open(sys.argv[1], encoding="utf-8") as swfile:
+    linkstatistikfilename = sys.argv[1]
+
+if len(sys.argv) > 2:
+    with open(sys.argv[2], encoding="utf-8") as swfile:
         for i in swfile:
             searchwords[i.rstrip()] = 0
 
@@ -25,10 +29,6 @@ if len(searchwords) == 0:
         eingabe = input("Enter search string: ")
         if eingabe != " ":
             searchwords[eingabe] = 0
-
-linkstatistikfilename = "Linkstatistik.txt"
-if len(sys.argv) > 2:
-    linkstatistikfilename = sys.argv[2]
 
 with open(linkstatistikfilename, encoding="utf-8") as readfile:
     for i in readfile:
