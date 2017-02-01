@@ -18,7 +18,7 @@ def safeStemmer(word):
 dictTokenFreq = dict()
 dictDocTokenFreq = defaultdict(dict)
 
-with open("Linkstatistik.txt", encoding="utf-8") as readfile:
+with open("data/Linkstatistik.txt", encoding="utf-8") as readfile:
     for i in readfile:
         tuple = i.rstrip().split("\t")
         if len(tuple) > 2:

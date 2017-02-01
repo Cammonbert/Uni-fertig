@@ -33,8 +33,8 @@ Possible execution speed advantage?
 import time
 start_time = time.time()
 
-with open("Linktext.txt", "w", encoding="utf-8") as writefile:
-    with open("wikilinks_en.txt", encoding="utf-8") as readfile:
+with open("data/Linktext.txt", "w", encoding="utf-8") as writefile:
+    with open("data/wikilinks_en.txt", encoding="utf-8") as readfile:
         foundLinkBeg = False
         hasText = False
         linkText = ""

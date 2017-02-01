@@ -34,11 +34,11 @@ dictDocVector = {}
 dictQuery = {}
 dictDocRanking = {}
 
-tffilename = "tf.csv"
+tffilename = "data/tf.csv"
 if len(sys.argv) > 1:
     tffilename = sys.argv[1]
 
-idffilename = "idf.csv"
+idffilename = "data/idf.csv"
 if len(sys.argv) > 2:
     idffilename = sys.argv[2]
 

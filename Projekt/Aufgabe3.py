@@ -14,7 +14,7 @@ def outputfile_open():
 searchwords = dict()
 dictText = dict()
 
-linkstatistikfilename = "Linkstatistik.txt"
+linkstatistikfilename = "data/Linkstatistik.txt"
 if len(sys.argv) > 1:
     linkstatistikfilename = sys.argv[1]
 
