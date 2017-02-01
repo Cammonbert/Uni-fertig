@@ -3,7 +3,7 @@ import sys
 def outputfile_open():
     try:
         if len(sys.argv) > 3:
-            fh = open(sys.argv[3], "w")
+            fh = open(sys.argv[3], "w", encoding="utf-8")
         else:
             fh = sys.stdout
         return fh
