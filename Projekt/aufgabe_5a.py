@@ -30,12 +30,12 @@ with open("data/Linkstatistik.txt", encoding="utf-8") as readfile:
                 dictTokenFreq[word] = dictTokenFreq.get(word, 0) + int(tuple[0])
                 dictDocTokenFreq[tuple[1]][word] = int(dictDocTokenFreq[tuple[1]].get(word, 0) + int(tuple[0]))
 
-    with open('idf.csv', 'w', encoding="utf-8") as csvfile:
+    with open('data/idf.csv', 'w', encoding="utf-8") as csvfile:
         idfWriter = csv.writer(csvfile)
         for token in dictTokenFreq:
             idfWriter.writerow([token, math.log(len(dictDocTokenFreq) / dictTokenFreq[token])])
 
-    with open('tf.csv', 'w', encoding="utf-8") as csvfile:
+    with open('data/tf.csv', 'w', encoding="utf-8") as csvfile:
         tfWriter = csv.writer(csvfile)
         for document in dictDocTokenFreq:
             maxVal = max(dictDocTokenFreq[document].values())
