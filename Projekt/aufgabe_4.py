@@ -13,16 +13,12 @@ def outputfile_open():
     except IOError:
         print("Error: could not open output file for writing!")
 
-def analyseSentenses(inputList, linkstatistikfilename):
-    jar = 'stanford-ner-2016-10-31/stanford-ner.jar'
-    model = 'stanford-ner-2016-10-31/classifiers/english.all.3class.distsim.crf.ser.gz'
-    st = StanfordNERTagger(model, jar)
-
-    # create list with words to look up
+def createSearchWordDic(inputText, tagger):
+    # create dict with words to look up
     searchwords = dict()
-    for sentence in inputList:
+    for sentence in inputText.split("\n"):
         sentence = word_tokenize(sentence)
-        tags = st.tag(sentence)
+        tags = tagger.tag(sentence)
 
         prevtup = ('', '')
         for tup in tags:
@@ -35,24 +31,14 @@ def analyseSentenses(inputList, linkstatistikfilename):
                 prevtup = (tup[0], tup[1])
         if prevtup[0] != "" and prevtup[1] != "O":
             searchwords[prevtup[0]] = 0
+    return searchwords
 
-    #create ranking
-    dictText = dict()
-    with open(linkstatistikfilename, encoding="utf-8") as readfile:
-        for i in readfile:
-            tuple = i.rstrip().split("\t")
-            if len(tuple) > 2:
-                if tuple[2] in searchwords:
-                    if int(tuple[0]) > searchwords[tuple[2]]:
-                        searchwords[tuple[2]] = int(tuple[0])
-                        dictText[tuple[2]] = tuple[1]
-
+def createOutList(inputText, dictText, tagger):
     #create sentense to return
     outputList = list()
-
-    for sentence in inputList:
+    for sentence in inputText.split("\n"):
         sentence = word_tokenize(sentence)
-        tags = st.tag(sentence)
+        tags = tagger.tag(sentence)
 
         satz = ""
         prevtup = ('', '')
@@ -83,26 +69,43 @@ def analyseSentenses(inputList, linkstatistikfilename):
                 satz += str(prevtup[0])
 
         outputList.append(satz)
-
     return outputList
+
+def analyseSentenses(inputList, linkstatistikfilename):
+    jar = 'stanford-ner-2016-10-31/stanford-ner.jar'
+    model = 'stanford-ner-2016-10-31/classifiers/english.all.3class.distsim.crf.ser.gz'
+    st = StanfordNERTagger(model, jar)
+
+    searchwords = createSearchWordDic(inputList, st)
+
+    #create ranking
+    dictText = dict()
+    with open(linkstatistikfilename, encoding="utf-8") as readfile:
+        for i in readfile:
+            tuple = i.rstrip().split("\t")
+            if len(tuple) > 2:
+                if tuple[2] in searchwords:
+                    if int(tuple[0]) > searchwords[tuple[2]]:
+                        searchwords[tuple[2]] = int(tuple[0])
+                        dictText[tuple[2]] = tuple[1]
+
+    return createOutList(inputList, dictText, st)
 
 
 #Starts here
-linkstatistikfilename = "data/Linkstatistik.txt"
-if len(sys.argv) > 1:
-    linkstatistikfilename = sys.argv[1]
+if __name__ == "__main__":
+    linkstatistikfilename = "data/Linkstatistik.txt"
+    if len(sys.argv) > 1:
+        linkstatistikfilename = sys.argv[1]
 
-if len(sys.argv) > 2:
-    with open(sys.argv[2], encoding="utf-8") as swfile:
-        searchlines = swfile.readlines()
-        outputList = analyseSentenses(searchlines, linkstatistikfilename)
-        with outputfile_open() as outfile:
-            for i in outputList:
-                outfile.write(i + "\n")
-else:
-    eingabe = ""
-    while eingabe != " ":
-        eingabe = input("Enter sentence, or 'Space' for quit: ")
-        if eingabe != " ":
-            print(analyseSentenses([eingabe], linkstatistikfilename)[0])
-
+    if len(sys.argv) > 2:
+        with open(sys.argv[2], encoding="utf-8") as swfile:
+            searchlines = swfile.read()
+            outputList = analyseSentenses(searchlines, linkstatistikfilename)
+            with outputfile_open() as outfile:
+                for i in outputList:
+                    outfile.write(i + "\n")
+    else:
+        eingabe = input("Enter sentence: ")
+        if eingabe != "":
+            print(analyseSentenses(eingabe, linkstatistikfilename)[0])
