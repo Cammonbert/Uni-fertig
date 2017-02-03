@@ -13,36 +13,44 @@ def safeStemmer(word):
     except IndexError:
         return word
 
+def stringNormalizer(linktext):
+    linktext = linktext.lower()
+    linktext = linktext.translate(str.maketrans('', '', str(string.punctuation + '(' + ')' + '\n')))
+    retList = []
+
+    for word in linktext.rstrip().split(" "):
+        retList.append(safeStemmer(word))
+
+    return retList
+
+
 #Starting point
+if __name__ == "__main__":
 
-dictTokenFreq = dict()
-dictDocTokenFreq = defaultdict(dict)
+    dictTokenFreq = dict()
+    dictDocTokenFreq = defaultdict(dict)
 
-with open("data/Linkstatistik.txt", encoding="utf-8") as readfile:
-    for i in readfile:
-        tuple = i.rstrip().split("\t")
-        if len(tuple) > 2:
-            linktext = tuple[2].lower()
-            linktext = linktext.translate(str.maketrans('', '', str(string.punctuation + '(' + ')')))
+    with open("data/Linkstatistik.txt", encoding="utf-8") as readfile:
+        for i in readfile:
+            tuple = i.rstrip().split("\t")
+            if len(tuple) > 2:
+                for word in stringNormalizer(tuple[2]):
+                    dictTokenFreq[word] = dictTokenFreq.get(word, 0) + int(tuple[0])
+                    dictDocTokenFreq[tuple[1]][word] = int(dictDocTokenFreq[tuple[1]].get(word, 0) + int(tuple[0]))
 
-            for word in linktext.rstrip().split(" "):
-                word = safeStemmer(word)
-                dictTokenFreq[word] = dictTokenFreq.get(word, 0) + int(tuple[0])
-                dictDocTokenFreq[tuple[1]][word] = int(dictDocTokenFreq[tuple[1]].get(word, 0) + int(tuple[0]))
+        with open('data/idf.csv', 'w', encoding="utf-8") as csvfile:
+            idfWriter = csv.writer(csvfile)
+            for token in dictTokenFreq:
+                idfWriter.writerow([token, math.log(len(dictDocTokenFreq) / dictTokenFreq[token])])
 
-    with open('data/idf.csv', 'w', encoding="utf-8") as csvfile:
-        idfWriter = csv.writer(csvfile)
-        for token in dictTokenFreq:
-            idfWriter.writerow([token, math.log(len(dictDocTokenFreq) / dictTokenFreq[token])])
+        with open('data/tf.csv', 'w', encoding="utf-8") as csvfile:
+            tfWriter = csv.writer(csvfile)
+            for document in dictDocTokenFreq:
+                maxVal = max(dictDocTokenFreq[document].values())
+                writeLine = [document]
 
-    with open('data/tf.csv', 'w', encoding="utf-8") as csvfile:
-        tfWriter = csv.writer(csvfile)
-        for document in dictDocTokenFreq:
-            maxVal = max(dictDocTokenFreq[document].values())
-            writeLine = [document]
+                for token in dictDocTokenFreq[document]:
+                    writeLine.append(token)
+                    writeLine.append(float(dictDocTokenFreq[document][token] / maxVal))
 
-            for token in dictDocTokenFreq[document]:
-                writeLine.append(token)
-                writeLine.append(float(dictDocTokenFreq[document][token] / maxVal))
-
-            tfWriter.writerow(writeLine)
+                tfWriter.writerow(writeLine)
