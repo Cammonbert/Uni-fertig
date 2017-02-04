@@ -56,7 +56,7 @@ def getRatingList(dictTf, dictIdf, searchText):
 
     for term in searchwords:
         if term in termFreq:
-            dictQuery[term] = math.log((len(dictTf) + 1) / (termFreq[term] + 1)) * float(swrFreq[term] / maxVal)
+            dictQuery[term] = math.log((len(dictTf) + 2) / (termFreq[term] + 1)) * float(swrFreq[term] / maxVal)
 
     for document in dictDocVector:
         dictDocRanking[document] = sim(dictDocVector[document], dictQuery)
