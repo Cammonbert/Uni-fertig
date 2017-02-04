@@ -4,6 +4,16 @@ import sys
 import aufgabe_4
 import aufgabe_5b
 
+def outputfile_open():
+    try:
+        if len(sys.argv) > 5:
+            fh = open(sys.argv[5], "w", encoding="utf-8")
+        else:
+            fh = sys.stdout
+        return fh
+    except IOError:
+        print("Error: could not open output file for writing!")
+
 def analyseSentenses(inputText, linkstatistikfilename, tffilename, idffilename):
     jar = 'stanford-ner-2016-10-31/stanford-ner.jar'
     model = 'stanford-ner-2016-10-31/classifiers/english.all.3class.distsim.crf.ser.gz'
@@ -46,8 +56,6 @@ def analyseSentenses(inputText, linkstatistikfilename, tffilename, idffilename):
 
     return aufgabe_4.createOutList(inputText, dictText, st)
 
-
-
 #Starts here
 if __name__ == "__main__":
     linkstatistikfilename = "data/Linkstatistik.txt"
@@ -66,7 +74,7 @@ if __name__ == "__main__":
         with open(sys.argv[4], encoding="utf-8") as swfile:
             searchlines = swfile.read()
             outputList = analyseSentenses(searchlines, linkstatistikfilename, tffilename, idffilename)
-            with aufgabe_4.outputfile_open() as outfile:
+            with outputfile_open() as outfile:
                 for i in outputList:
                     outfile.write(i + "\n")
     else:
